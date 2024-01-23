@@ -1,0 +1,93 @@
+*{
+    box-sizing:border-box;
+}
+
+body{
+    background: rgb(226, 225, 225);
+}
+
+.menu{
+    position: relative;
+    margin-top: 20%;
+    top: 20%;
+    left: 91.8%;
+    width: 0px;
+}
+
+.toggle + .style {
+    width: 140px;
+    padding-top: 50px;
+    height: 120px;
+    font-size: 215%;
+}
+
+.container{
+    border: 2px solid black;
+    padding:20px;
+    width:360px;
+    background:#a9e9c9;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    border-radius:13px;
+    overflow:hidden;
+}
+
+.container .input-box{
+    height:160px; 
+    width:100%;
+}
+
+.container .btns-box{
+    height:360px;       
+}
+
+.container .btns-box button{
+    all:unset;  
+    height:60px;
+    width:64px;
+    background:#bf98e4;
+    color:black;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:7px;
+    float:left;
+    margin-left:10px;
+    margin-top:10px;
+    cursor:pointer;
+    position:relative;
+    font-size:20px;
+    font-weight:900;
+    border: 2px solid black;
+}
+
+.container .btns-box .btn.no-btn{
+    pointer-events:none;        
+}
+
+.container .btns-box .op{
+    background:#53b2f1;        
+}
+
+.container .input-box input{
+    all:unset;
+    height:58px;
+    width:317px;
+    position:relative;
+    top:70px;
+    text-align:right;
+    font-size:20px;
+    color:black;
+}
+
+.container .input-box .input-value{
+    height:30px;
+    font-size:25px;
+}
+
+.container .input-box .result{
+    font-weight:600;    
+    font-size:39px;
+}
