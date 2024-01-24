@@ -1,8 +1,8 @@
-let backbtn = document.querySelector('.container .back-btn');
+let backbutton = document.querySelector('.container .back-button');
 let input = document.querySelector('.container .input-box .input-value');
 let result = document.querySelector('.container .input-box .result');
 let container = document.querySelector('.container');
-let allbtns = document.querySelectorAll('.container .btn');
+let allbuttons = document.querySelectorAll('.container .button');
 let flag = 0;
 let op = 0;
 let backSpace = () => {
@@ -18,39 +18,39 @@ let backSpace = () => {
 }
 
 
-for (let item of allbtns) {
+for (let item of allbuttons) {
         item.addEventListener('click', (e) => {
-                let btnText = e.target.innerHTML;
-                if(btnText == '×' || btnText == '÷' || btnText == '+' || btnText == '-' || btnText == '%'){
+                let buttonText = e.target.innerHTML;
+                if(buttonText == '×' || buttonText == '÷' || buttonText == '+' || buttonText == '-' || buttonText == '%'){
                         if(op == 1){
                                 input.value = input.value.substr(0, input.value.length - 1);
                                 op = 0;
                         }
                 }
                 
-                if (btnText == '×') {
-                        btnText = '*';
+                if (buttonText == '×') {
+                        buttonText = '*';
                 }
 
-                if (btnText == '÷') {
-                        btnText = '/';
+                if (buttonText == '÷') {
+                        buttonText = '/';
                 }
 
-                if(btnText == '( )' && flag == 0){
-                        btnText = '(';
+                if(buttonText == '( )' && flag == 0){
+                        buttonText = '(';
                         if(input.value[input.value.length - 1] != '*' && input.value[input.value.length - 1] != '/' && input.value[input.value.length - 1] != '+' && input.value[input.value.length - 1] != '-' && input.value[input.value.length - 1] != '%')
-                        {btnText = '*' + btnText;}
+                        {buttonText = '*' + buttonText;}
                         flag = 1;
-                } else if(btnText == '( )' && flag == 1){
-                        btnText = ')';
+                } else if(buttonText == '( )' && flag == 1){
+                        buttonText = ')';
                         flag = 0;
                 }
 
-                if(btnText == '√'){
+                if(buttonText == '√'){
                         result.value = Math.sqrt(input.value, 2);
                 }
                 else{
-                        input.value += btnText;
+                        input.value += buttonText;
                 }
 
                 
@@ -68,9 +68,37 @@ for (let item of allbtns) {
 
 let calculate = () => {
 
-        const query = "http://localhost:3333/users?display="+ encodeURIComponent(input.value);
+        /* 
+
+        //GET METHOD
+
+        const query = "http://localhost:3333/users?display=" + encodeURIComponent(input.value);
 
         fetch(query)
+        .then(response => {
+                return response.json();
+        })
+        .then(message => {
+                result.value = message.resu;
+        })
+
+        */
+
+        //POST METHOD
+
+        const query = "http://localhost:3333/users";
+
+        const request = {
+                method: 'POST',
+                header: {
+                        'Content-Type': 'application/json'
+                },
+                body: new URLSearchParams({
+                        'display': input.value
+                })
+        }
+
+        fetch(query, request)
         .then(response => {
                 return response.json();
         })
